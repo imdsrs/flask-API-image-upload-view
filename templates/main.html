@@ -1,0 +1,89 @@
+<!doctype html>
+<head>
+	<title>Polydesign</title>
+	<link rel="icon" type="image/x-icon" href="static/Images/favicon.jpg">
+</head>
+<body>
+
+	{% if filename %}
+	<h1>
+		<img src="static/Images/favicon.jpg" height="40" width="40">&nbsp;Polydesign
+	</h1>
+	<h2>Result: </h2>
+		<div>
+			<img src="{{ url_for('static', filename='/Images/Output/'+filename) }}">
+			<figcaption>{{filename}}</figcaption>
+		</div>
+	{% else %}
+	<h1>
+		<img src="static/Images/favicon.jpg" height="40" width="40">&nbsp;Polydesign
+	</h1>
+	<h2>Select a file to upload</h2>
+
+	<table>
+	<form method="post" action="/home" enctype="multipart/form-data">
+		<!-- <p> -->
+		<tr>
+			<td>
+				<label for="InteriorStyle">Choose a Interior Style:</label>
+			</td>
+			
+			<td>
+				<select name="InteriorStyle" id="InteriorStyle" required>
+					<option value="" disabled selected>Select your Interior Design Style</option>
+					<option value="value 1">Interior Style value 1</option>
+					<option value="value 2">Interior Style value 2</option>
+					<option value="Value 3">Interior Style value 3</option>
+					<option value="Value 4">Interior Style value 4</option>
+				</select>
+			</td>
+		</tr>
+		<!-- </p> -->
+			<tr>
+				<td>
+				<label for="RoomStyle">Choose a Room Type:</label>
+				</td>
+			<td>
+				<select name="RoomStyle" id="RoomStyle" required>
+					<option value="" disabled selected>Select your Room Type</option>
+					<option value="value 1">Room Type value 1</option>
+					<option value="value 2">Room Type value 2</option>
+					<option value="Value 3">Room Type value 3</option>
+					<option value="Value 4">Room Type value 4</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<label for="Prompt">Enter Prompt to Generate Design:</label>
+				</td>
+				
+				<td>
+				<textarea id="Prompt" name="Prompt" rows="4" cols="50" placeholder="Enter Your Prompt" required></textarea>
+				</td>
+			</tr>
+		<tr>
+			<td>
+			<label for="UserImage">Select the image to Upload:</label>
+			</td>
+			<td>
+			<input type="file" id="UserImage" name="UserImage" autocomplete="off" required>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="BudgetControl">Enter the Budget &pound;:</label>
+				</td>
+				<td>
+				<input type="number" id="BudgetControl" name="BudgetControl" min="0" step="0.01" required>
+				</td>
+			</tr>
+		<tr>
+			<td>
+			<input type="submit" value="Submit">
+			</td>
+		</tr>
+	</form>
+	</table>
+	{% endif %}
+</body>
